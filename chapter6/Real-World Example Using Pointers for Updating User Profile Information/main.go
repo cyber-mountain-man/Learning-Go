@@ -42,3 +42,10 @@ func main() {
 	// Display update profile
 	fmt.Println("After update:", user)
 }
+
+/*
+🔹 Why Use Pointers in This Case?
+✅ Without pointers, Go would pass a copy of user, meaning changes wouldn’t persist.
+✅ With pointers (*User), the function directly modifies the original struct.
+✅ This approach is useful in real-world applications like updating user profiles in databases.
+*/

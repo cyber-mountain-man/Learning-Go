@@ -1,0 +1,12 @@
+🌍 Welcome to the Go File Reader Test! 🚀
+
+Did you know?
+- The Go programming language was created at Google in 2009.
+- Go is designed for efficiency, simplicity, and scalability.
+- The mascot of Go is a blue gopher. 🐹
+
+Fun fact:
+"Hello, World!" is often the first program written in any language.
+But here, we're reading files instead! 📄
+
+Happy Coding! 🎯

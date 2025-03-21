@@ -1,0 +1,3 @@
+Hello from file 2!
+This is another test file.
+Command-line tools are awesome.

@@ -1,0 +1,3 @@
+This is file 1.
+It contains sample content for testing the CLI program.
+Enjoy parsing arguments!

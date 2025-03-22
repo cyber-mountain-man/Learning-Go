@@ -22,33 +22,74 @@ func TestMultiply(t *testing.T) {
 	}
 }
 
+// 🧪 Benchmark Test for Add
+func BenchmarkAdd(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Add(10, 20)
+	}
+}
+
+// 🧪 Benchmark Test for Multiply
+func BenchmarkMultiply(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Multiply(10, 20)
+	}
+}
+
 /*
-✅ Let's walk through the code:
+✅ Let's walk through the test suite:
 
-1️⃣ Test Structure (`func TestXxx(*testing.T)`)
-   - All test functions in Go must start with `Test` and take a `*testing.T` argument.
-   - Go automatically detects and runs these with `go test`.
+1️⃣ **Test Structure (`func TestXxx(*testing.T)`)**
+   - All test functions start with `Test` and take a `*testing.T` parameter.
+   - Go uses this naming convention to auto-discover and run the tests with `go test`.
 
-2️⃣ Running the Function Under Test
-   - `Add(2, 3)` and `Multiply(4, 5)` are examples of using real values to verify correct behavior.
-   - These functions are assumed to be defined in `mathutils.go`.
+2️⃣ **Running the Function Under Test**
+   - `Add(2, 3)` and `Multiply(4, 5)` validate real inputs against expected outputs.
+   - These functions are defined in the `mathutils` package.
 
-3️⃣ Error Reporting
-   - If the output doesn't match the expected result, `t.Errorf()` logs an error.
-   - The test fails gracefully and reports what went wrong.
+3️⃣ **Error Reporting**
+   - `t.Errorf()` logs a failure if the result doesn't match what's expected.
+   - Makes it easy to identify what failed and why.
 
-4️⃣ Running the Tests
-   Use this in the terminal from the project root or test directory:
+4️⃣ **Benchmark Tests (`func BenchmarkXxx(*testing.B)`)**
+   - Benchmarks measure performance using the built-in `testing.B` type.
+   - `b.N` is dynamically set by Go to run enough iterations for reliable measurements.
+   - Example:
+     ```go
+     for i := 0; i < b.N; i++ {
+         Add(10, 20)
+     }
+     ```
 
-   
-5️⃣ Why This Is Useful
-- ✅ Confirms your code works as intended.
-- ✅ Catches bugs early during development.
-- ✅ Ensures updates don't break existing functionality (regression testing).
-- ✅ Encourages good software engineering practices like **Test-Driven Development (TDD)**.
-- ✅ Integrates smoothly with CI/CD pipelines for automation.
+5️⃣ **How to Run the Tests and Benchmarks**
+   - To run unit tests:
+     ```bash
+     go test
+     ```
+   - To run benchmarks:
+     ```bash
+     go test -bench=.
+     ```
 
-📌 Real-World Tip:
-- Use table-driven tests to validate many input/output pairs.
-- Consider separating test files from implementation using `_test.go` suffix as done here.
+6️⃣ **Expected Benchmark Output**
+
+	goos: windows
+	goarch: amd64 
+	BenchmarkAdd-8 500000000 2.50 ns/op 
+	BenchmarkMultiply-8 300000000 4.00 ns/op 
+	PASS 
+	ok mathutils 2.345s
+
+	
+7️⃣ **Why This Is Useful**
+- ✅ Confirms code correctness and performance.
+- ✅ Catches bugs early and prevents regressions.
+- ✅ Encourages **Test-Driven Development (TDD)**.
+- ✅ Helps tune performance with benchmarks.
+- ✅ Seamlessly integrates into CI/CD pipelines.
+
+📌 **Real-World Tips**
+- Use **table-driven tests** to test multiple input/output cases cleanly.
+- Keep tests in `_test.go` files to separate them from production code.
+- Add benchmarking for computational or frequently called code to detect performance regressions over time.
 */
